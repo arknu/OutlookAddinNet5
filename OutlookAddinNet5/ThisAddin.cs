@@ -1,4 +1,5 @@
 ﻿using AddInDesignerObjects;
+using Microsoft.Office.Core;
 using System;
 using System.Drawing;
 using System.IO;
@@ -11,7 +12,7 @@ namespace OutlookAddinNet5
     [ComVisible(true)]
     [Guid("011150D8-70D0-42C2-B00A-3A1290399760")]
     [ProgId("OutlookAddinNet5")]
-    public partial class  ThisAddin : _IDTExtensibility2
+    public partial class  ThisAddin : _IDTExtensibility2, ICustomTaskPaneConsumer
     {
         public Outlook.Application Application { get; set; }
 
@@ -42,6 +43,7 @@ namespace OutlookAddinNet5
         /// </summary>
         public void OnCommand(string commandId)
         {
+
             switch (commandId)
             {
                 case "Command1":
@@ -131,6 +133,29 @@ namespace OutlookAddinNet5
         public void OnBeginShutdown(ref Array custom)
         {
             
+        }
+
+        private ICTPFactory myCtpFactory;
+        private CustomTaskPane myPane;
+        private TestTaskPane myControl;
+        //http://shulerent.com/2011/01/23/adding-task-panes-in-a-office-add-in-when-using-idtextensibility2/
+        public void CTPFactoryAvailable(ICTPFactory CTPFactoryInst)
+        {
+            // Store the CTP Factory for future use. You need this to display
+            // Custom Task Panes
+            myCtpFactory = CTPFactoryInst;
+
+            // Create the task pane using UserControl1 as the contents
+            // The third parameter, when supplied, is Window object.
+            myPane = myCtpFactory.CreateCTP("OutlookAddinNet5.TestTaskPane", "My Task Pane", Type.Missing);
+
+            //Set the dock position and show the task pane
+            myPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionRight;
+            myPane.Visible = true;
+
+            // CustomTaskPane.ContentControl is a reference to the control object
+            myControl = (TestTaskPane)myPane.ContentControl;
+
         }
     }
 }
