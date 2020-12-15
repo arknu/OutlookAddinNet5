@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "OutlookAddinNet5": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.EXE"
+    }
+  }
+}
