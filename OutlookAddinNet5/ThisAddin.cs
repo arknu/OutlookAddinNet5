@@ -32,9 +32,17 @@ namespace OutlookAddinNet5
         /// </summary>
         public void Command2()
         {
-           
-            MessageBox.Show(
-                string.Format("Hello from (conditional) command 2!"));
+
+            // Create the task pane using UserControl1 as the contents
+            // The third parameter, when supplied, is Window object.
+            myPane = myCtpFactory.CreateCTP("OutlookAddinNet5.TestTaskPane", "My Task Pane", Application.ActiveExplorer());
+
+            //Set the dock position and show the task pane
+            myPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionRight;
+            myPane.Visible = true;
+
+            // CustomTaskPane.ContentControl is a reference to the control object
+            myControl = (TestTaskPane)myPane.ContentControl;
         }
 
         /// <summary>
@@ -145,16 +153,7 @@ namespace OutlookAddinNet5
             // Custom Task Panes
             myCtpFactory = CTPFactoryInst;
 
-            // Create the task pane using UserControl1 as the contents
-            // The third parameter, when supplied, is Window object.
-            myPane = myCtpFactory.CreateCTP("OutlookAddinNet5.TestTaskPane", "My Task Pane", Type.Missing);
-
-            //Set the dock position and show the task pane
-            myPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionRight;
-            myPane.Visible = true;
-
-            // CustomTaskPane.ContentControl is a reference to the control object
-            myControl = (TestTaskPane)myPane.ContentControl;
+           
 
         }
     }
