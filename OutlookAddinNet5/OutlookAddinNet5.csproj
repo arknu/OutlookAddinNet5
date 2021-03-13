@@ -2,18 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
     <EnableComHosting>true</EnableComHosting>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="TestTaskPane.cs" />
-    <Compile Remove="TestTaskPane.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Remove="TestTaskPane.resx" />
-  </ItemGroup>
 
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Outlook.dll">
@@ -43,10 +35,6 @@
       <Isolated>false</Isolated>
       <EmbedInteropTypes>true</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\OutlookAddinNet5.UI\OutlookAddinNet5UI.csproj" />
   </ItemGroup>
 
 

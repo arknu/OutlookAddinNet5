@@ -1,6 +1,5 @@
 ﻿using AddInDesignerObjects;
 using Microsoft.Office.Core;
-using OutlookAddinNet5UI;
 using System;
 using System.Drawing;
 using System.IO;
@@ -36,7 +35,7 @@ namespace OutlookAddinNet5
 
             // Create the task pane using UserControl1 as the contents
             // The third parameter, when supplied, is Window object.
-            myPane = myCtpFactory.CreateCTP("OutlookAddinNet5UI.TestTaskPane", "My Task Pane", Type.Missing);
+            myPane = myCtpFactory.CreateCTP("OutlookAddinNet5.TestTaskPane", "My Task Pane", Type.Missing);
 
             //Set the dock position and show the task pane
             myPane.DockPosition = Microsoft.Office.Core.MsoCTPDockPosition.msoCTPDockPositionRight;
