@@ -11,6 +11,7 @@ You need to add some registry keys to make Outlook load the addin, use the file 
 
 ## In Outlook
 When starting Outlook, you should see two buttons on the ribbon. 
+![image](https://user-images.githubusercontent.com/4654741/111029157-5c176880-83fb-11eb-91d3-2157ccf0b8bc.png)
 
 Button 1 will just show a message box. 
 
