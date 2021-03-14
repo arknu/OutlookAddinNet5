@@ -4,6 +4,9 @@ This is a proof-of-concept for making a COM-based Outlook addin using .NET 5, no
 
 **This does not currently work due to bugs in WinForms.** See https://github.com/dotnet/winforms/issues/4370
 
+## Building
+This project is intended to be used with a custom patched build of WinForms. You'll likely need to update the path in the project file for the WinForms references.
+
 ## Running
 After building, you need to manually register the COM host. Open an Admin command propmt in the output folder and run `regsvr32 OutlookAddinNet5.comhost.dll`
 
